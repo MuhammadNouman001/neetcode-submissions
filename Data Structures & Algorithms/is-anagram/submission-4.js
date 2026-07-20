@@ -1,0 +1,33 @@
+class Solution {
+    /**
+     * @param {string} s
+     * @param {string} t
+     * @return {boolean}
+     */
+    isAnagram(s, t) {
+        if(s.length!=t.length){
+            return false
+        }
+        let map = {}
+
+        for(let i = 0; i<s.length; i++){
+            if(map[s[i]]){
+                map[s[i]]=++map[s[i]]
+            }
+            else{
+                map[s[i]]= 1
+            }
+        }
+        for(let j = 0; j<t.length; j++){
+            if(map[t[j]]){
+                map[t[j]]--
+            }
+        }
+        for(let key in map){
+            if(map[key]!=0){
+                return false
+            }
+        }
+        return true
+    }
+}
